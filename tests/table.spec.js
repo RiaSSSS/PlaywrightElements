@@ -46,7 +46,7 @@ test("Web Table Handling", async ({ page }) => {
     }
 });
 
-test.only("dynamic table", async ({ page }) => {
+test("dynamic table", async ({ page }) => {
     await page.goto("https://testuserautomation.github.io/WebTable/");
     const row = await page.locator('//table/tbody/tr').count();
     console.log("row count:" + row);
@@ -72,4 +72,20 @@ test.only("dynamic table", async ({ page }) => {
     }
     console.log(arr1[1].join());
     //await page.waitForTimeout(3000);
+})
+
+test.only("Money Control table", async ({ page }) => {
+    await page.goto("https://www.moneycontrol.com/", {
+        waitUntil: "domcontentloaded",
+        timeout: 60000
+    });
+    const rowCount = await page.locator("//div[@id='in_tgNifty']/table/tbody/tr").count();
+    const columnCount = await page.locator("//div[@id='in_tgNifty']/table/tbody/tr[1]/td").count();
+    console.log(rowCount);
+    console.log(columnCount);
+    for (let i = 1; i <= rowCount; i++) {
+        const data = await page.locator(`//div[@id='in_tgNifty']/table/tbody/tr[${i}]`).innerText();
+        console.log(data);
+    }
+
 })

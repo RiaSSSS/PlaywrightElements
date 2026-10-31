@@ -250,7 +250,7 @@ test.only("Window Handling - Separate Window", async ({ page }) => {
     console.log("Child Window Validation Passed");
 
     // ======================================================
-    // STEP 9 - CLOSE CHILD WINDOW
+    // STEP 9 - CLOSE CHILD WINDOW                                  
     // ======================================================
     await page1.close();
 
